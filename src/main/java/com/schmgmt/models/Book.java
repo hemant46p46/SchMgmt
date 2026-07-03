@@ -15,8 +15,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "books")
 @NamedQueries({
-	@NamedQuery(name = "Book.findAllBooks", query = "SELECT b from Book b "),
-	@NamedQuery(name = "Book.findBookById", query = "SELECT b from Book b WHERE b.id = :id")
+    // Standard JPA Annotation mapping
+    @NamedQuery(name = "Book.findAllBooks", query = "SELECT b FROM Book b"),
+    @NamedQuery(name = "Book.findBookById", query = "SELECT b FROM Book b WHERE b.id = :id")
 })
 public class Book {
 
