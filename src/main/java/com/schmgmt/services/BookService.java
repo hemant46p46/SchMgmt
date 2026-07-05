@@ -15,7 +15,19 @@ public class BookService {
 		this.bookRepository = bookRepository;
 	}
 	
+	public Book addBook(Book book) {
+		return this.bookRepository.addBook(book);
+	}
+	
 	public List<Book> getAllBooks(){
 		return this.bookRepository.findAll();
+	}
+	
+	public List<Book> getBookById(Long id){
+		return this.bookRepository.findById(id);
+	}
+	
+	public Book updateBook(Book updatedBook, Long id) {
+		return this.bookRepository.updateBook(updatedBook, id);
 	}
 }
