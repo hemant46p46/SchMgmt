@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
@@ -15,6 +17,12 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "teachers")
+@NamedQueries({
+	@NamedQuery(name = "Teacher.findAllNQ", query = "SELECT t from Teacher t"),
+	@NamedQuery(name = "Teacher.findById", query = "SELECT t from Teacher t WHERE t.teacherId = :id"),
+	@NamedQuery(name = "Teacher.updateFields", query = "UPDATE Teacher t set t.firstName = :firstName, t.lastName = :lastName, t.email = :email, t.department = :department where t.teacherId = :id"),
+	@NamedQuery(name = "Teacher.deleteById", query = "DELETE FROM Teacher t where t.teacherId= :id")
+})
 public class Teacher {
 
 	@Id

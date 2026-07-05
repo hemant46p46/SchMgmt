@@ -15,9 +15,10 @@ import lombok.Setter;
 @Entity
 @Table(name = "books")
 @NamedQueries({
-    // Standard JPA Annotation mapping
     @NamedQuery(name = "Book.findAllBooks", query = "SELECT b FROM Book b"),
-    @NamedQuery(name = "Book.findBookById", query = "SELECT b FROM Book b WHERE b.id = :id")
+    @NamedQuery(name = "Book.findBookById", query = "SELECT b FROM Book b WHERE b.id = :id"),
+    @NamedQuery(name = "Book.updateBookById", query = "UPDATE Book b SET b.title = :title, b.author = :author, b.isbn = :isbn, b.publishYear = :publishYear, b.totalCopies = :totalCopies, b.availableCopies = :availableCopies, b.courseId = :courseId WHERE b.id = :id"),
+    @NamedQuery(name = "Book.deleteBook", query = "DELETE FROM Book b WHERE b.id = :id")
 })
 public class Book {
 
