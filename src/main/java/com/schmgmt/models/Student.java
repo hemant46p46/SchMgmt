@@ -74,4 +74,9 @@ public class Student {
 
     @Column(name = "profile_pic", columnDefinition = "bytea")
     private byte[] profilePic;
+    
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", unique = true)
+    private User user;
 }
