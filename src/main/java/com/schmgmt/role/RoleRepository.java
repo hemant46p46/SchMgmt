@@ -8,10 +8,7 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 
     boolean existsByNameIgnoreCase(String name);
 
-    boolean existsByNameIgnoreCaseAndPrimaryKeyNot(
-            String name,
-            Long primaryKey
-    );
+    boolean existsByNameIgnoreCaseAndPrimaryKeyNot(String name, Long primaryKey);
 
     List<Role> findAllByIsActiveTrueOrderByNameAsc();
 }

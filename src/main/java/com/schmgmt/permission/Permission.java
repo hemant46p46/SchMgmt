@@ -6,9 +6,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(
-        name = "permissions", uniqueConstraints = { @UniqueConstraint(name = "uk_permission_name", columnNames = "name")}
-)
+@Table(name = "permissions", uniqueConstraints = {@UniqueConstraint(name = "uk_permission_name", columnNames = "name")})
 @Getter
 @Setter
 @Builder
@@ -29,7 +27,7 @@ public class Permission {
     @Column(name = "module", nullable = false, length = 50)
     private String module;
 
-    @Column(name = "is_active" , nullable = false)
+    @Column(name = "is_active", nullable = false)
     @Builder.Default
     private boolean isActive = true;
 
@@ -40,14 +38,14 @@ public class Permission {
     private LocalDateTime updatedAt;
 
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         LocalDateTime now = LocalDateTime.now();
         this.createdAt = now;
         this.updatedAt = now;
     }
 
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
 }

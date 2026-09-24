@@ -6,15 +6,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(
-        name = "roles",
-        uniqueConstraints = {
-                @UniqueConstraint(
-                        name = "uk_roles_name",
-                        columnNames = "name"
-                )
-        }
-)
+@Table(name = "roles", uniqueConstraints = {@UniqueConstraint(name = "uk_roles_name", columnNames = "name")})
 @Getter
 @Setter
 @Builder
@@ -26,37 +18,20 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long primaryKey;
 
-    @Column(
-            name = "name",
-            nullable = false,
-            length = 50
-    )
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    @Column(
-            name = "description",
-            length = 255
-    )
+    @Column(name = "description", length = 255)
     private String description;
 
-    @Column(
-            name = "is_active",
-            nullable = false
-    )
+    @Column(name = "is_active", nullable = false)
     @Builder.Default
     private boolean isActive = true;
 
-    @Column(
-            name = "created_at",
-            nullable = false,
-            updatable = false
-    )
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(
-            name = "updated_at",
-            nullable = false
-    )
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
     @PrePersist
